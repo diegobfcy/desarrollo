@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./LoginPage.css";
 import logo from "./../../assets/logo.png";
 
+/**
+ * LoginPage component handles user login and redirects based on the user's role.
+ * @component
+ * @returns {JSX.Element} The rendered LoginPage component.
+ */
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Crea la función de navegación
+  const navigate = useNavigate();
 
+  /**
+   * Handles the login process, sending email and password to the server.
+   * Redirects to the appropriate page based on the user's role.
+   * @async
+   * @param {Event} event - The form submission event.
+   */
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
@@ -22,19 +33,16 @@ const LoginPage = () => {
       const data = await response.json();
       if (response.ok) {
         console.log('Login successful', data);
-        // Redirige basado en el rol del usuario
         if (data.user && data.user.rol === 'admin') {
-          navigate('/admin'); // Redirige al panel de administración
+          navigate('/admin');
         } else {
-          navigate('/inicio'); // Redirige a la página de inicio para usuarios comunes
+          navigate('/inicio');
         }
       } else {
         console.error('Login failed', data.message);
-        // Puedes mostrar un mensaje de error aquí
       }
     } catch (error) {
       console.error('Network error', error);
-      // Maneja errores de red aquí
     }
   };
 

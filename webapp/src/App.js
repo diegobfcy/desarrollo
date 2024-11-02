@@ -14,11 +14,16 @@ import AddBookPage from './pages/AddBookPage/AddBookPage';
 import EditBookPage from './pages/EditBookPage/EditBookPage';
 import AddCategoryPage from './pages/AddCategoryPage/AddCategoryPage';
 
+/**
+ * App component is the main application component that sets up routing for the entire application.
+ * It uses React Router to define routes for different pages.
+ * @component
+ * @returns {JSX.Element} The rendered App component.
+ */
 function App() {
   return (
     <Router>
       <div className="App">
-
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/inicio" element={<MainPage />} />

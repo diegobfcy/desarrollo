@@ -9,8 +9,14 @@ import BooksPage from '../BooksPage/BooksPage';
 import AddBookPage from '../AddBookPage/AddBookPage';
 import UsersPage from '../UsersPage/UsersPage';
 
+/**
+ * MainPage component renders the main structure of the application, including
+ * the header, introductory section, best sellers, common questions, and footer.
+ * @component
+ * @returns {JSX.Element} The rendered MainPage component.
+ */
 function MainPage() {
-  const scrollContainerRef = useRef(null);  // Creando la referencia
+  const scrollContainerRef = useRef(null);
 
   return (
     <div className="App" ref={scrollContainerRef}>

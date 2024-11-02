@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
-import {Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * El componente AddCategoryPage renderiza un formulario para agregar una nueva categoría.
+ * @component
+ * @returns {JSX.Element} El componente AddCategoryPage renderizado.
+ */
 const AddCategoryPage = () => {
   const [categoryName, setCategoryName] = useState('');
   const navigate = useNavigate();
 
+  /**
+   * Maneja el envío del formulario para agregar una nueva categoría.
+   * @async
+   * @function
+   * @param {Event} event - El evento de envío del formulario.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newCategory = { nombre: categoryName };
@@ -15,18 +26,18 @@ const AddCategoryPage = () => {
       body: JSON.stringify(newCategory)
     });
     if (response.ok) {
-      navigate('/categories');  // Assuming you have a route to go back to categories list
+      navigate('/categories'); // Redirección a la lista de categorías
     }
   };
 
   return (
     <div className="container mt-5 Lexend-Deca">
-      <h1 className="mb-4">Add New Category</h1>
+      <h1 className="mb-4">Agregar Nueva Categoría</h1>
       <Form className='mx-5' onSubmit={handleSubmit}>
         <Form.Group controlId="categoryName" className="mb-3">
           <Form.Control
             type="text"
-            placeholder="Enter category name"
+            placeholder="Ingrese el nombre de la categoría"
             value={categoryName}
             onChange={(e) => setCategoryName(e.target.value)}
             style={{
@@ -45,7 +56,7 @@ const AddCategoryPage = () => {
             border: 'none',
           }}
         >
-          Save Category
+          Guardar Categoría
         </Button>
       </Form>
     </div>

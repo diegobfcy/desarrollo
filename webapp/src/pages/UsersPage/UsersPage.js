@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 
+/**
+ * UsersPage component displays a list of users fetched from an API.
+ * @component
+ * @returns {JSX.Element} The rendered UsersPage component.
+ */
 const UsersPage = () => {
-  // Estado para los usuarios
   const [users, setUsers] = useState([]);
 
-  // Cargar los usuarios desde la API cuando el componente se monte
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:3002/usuarios'); // Asegúrate de que la URL sea correcta
+        const response = await fetch('http://localhost:3002/usuarios');
         const data = await response.json();
         setUsers(data);
       } catch (error) {

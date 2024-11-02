@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './RegisterPage.css'; // Ensure this CSS file is created
+import './RegisterPage.css';
 import logo from './../../assets/logo.png';
 
+/**
+ * RegisterPage component renders the registration form for new users.
+ * It handles user input and sends the registration data to the server.
+ * @component
+ * @returns {JSX.Element} The rendered RegisterPage component.
+ */
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  /**
+   * Handles the registration process by sending user data to the server.
+   * @async
+   * @param {Event} event - The form submission event.
+   */
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
@@ -21,10 +32,8 @@ const RegisterPage = () => {
       const data = await response.json();
       if (response.ok) {
         console.log('Registration successful', data);
-        // Redirect or handle registration success
       } else {
         console.error('Registration failed', data.message);
-        // Handle registration errors
       }
     } catch (error) {
       console.error('Network error', error);
@@ -37,7 +46,7 @@ const RegisterPage = () => {
         <div className="col-md-6 left-section">
           <div className="logo-section">
             <img src={logo} alt="Logo" className="logo" />
-            <span className="logo-text kadwa-font" >LibroHub</span>
+            <span className="logo-text kadwa-font">LibroHub</span>
           </div>
           <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
             <h1 className="Lexend-Deca text-start" style={{ maxWidth: "500px" }}>
