@@ -1,0 +1,15 @@
+# Dependencias
+node_modules/
+
+# Archivos de log
+*.log
+
+# Directorio de salida de compilación
+/dist
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de configuración específicos del entorno local
+.env
